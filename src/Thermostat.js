@@ -1,28 +1,42 @@
-var defaultTemperature = 20;
-var minTemperature = 10;
-var maxTemperatureModeOn = 25;
 
 function ThermostatException(message) {
   this.name = "ThermostatException";
   this.message = message;
 }
 
+
 function Thermostat() {
-  this.temperature = defaultTemperature;
-  this.min = minTemperature;
+  this.temperature = 20;
+  this.min = 10;
+  this.maxTemperatureModeOn = 25;
+  this.maxTemperatureModeOff = 32;
   this.powerSavingModeOn = true;
 };
 
-Thermostat.prototype.up = function(number) {
-  return (this.temperature += number);
+Thermostat.prototype.checkMax = function () {
+  if (this.powerSavingModeOn) {
+    return this.maxTemperatureModeOn
+  } else {
+    return this.maxTemperatureModeOff
+  }
+};
+
+Thermostat.prototype.up = function() {
+  if (this.powerSavingModeOn && this.temperature === this.checkMax()) {
+    throw new ThermostatException("Can't go above " + this.maxTemperatureModeOn + " temperature")
+  }
+  if (this.temperature === this.checkMax()) {
+    throw new ThermostatException("Can't go above " + this.maxTemperatureModeOff + " temperature")
+  }
+  return (this.temperature ++);
 };
 
 
-Thermostat.prototype.down = function(number) {
-  if(this.temperature - number < this.min) {
+Thermostat.prototype.down = function() {
+  if(this.temperature - 1  < this.min) {
     throw new ThermostatException("Can't go below the " + this.min + "temperature")
   }
-  return (this.temperature -= number);
+  return (this.temperature --);
 };
 
 
