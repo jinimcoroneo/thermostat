@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Thermostat", function() {
   var thermostat;
   beforeEach(function() {
@@ -81,4 +83,10 @@ describe("Thermostat", function() {
       expect(thermostat.energyUsage()).toEqual("high-usage");
     });
   });
+
+  describe("has a function to say if power saving mode is on or off", function() {
+    it("can return on when power saving mode is on", function() {
+      expect(thermostat.getMode()).toEqual("on");
+    })
+  })
 });

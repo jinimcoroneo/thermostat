@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thermostat</title>
+  </head>
+  <body>
+    <script src="src/Thermostat.js"></script>
+    <script src="src/jquery-3.2.1.min.js"></script>
+    <script src="src/interface.js"></script>
+      <div class="medium-usage" id="background">
+        <h1 id="current_temp"> </h1>
+        <button id="up_button"> Increase temp </button>
+        <button id="down_button"> Decrease temp </button>
+        <button id="reset_button"> Reset </button>
+        <button id="power_saving"> Power Saving Mode </button>
+        <div id="mode_on/off"> Power Saving Mode is <span id="mode"></span> </div>
+      </div>
+  </body>
+</html>
+
+
+<style>
+.medium-usage {
+  border-style: solid;
+  border-color: black;
+  size: 24px;
+}
+
+.low-usage {
+  border-style: solid;
+  border-color: blue;
+  size: 24px;
+}
+
+.high-usage {
+  border-style: solid;
+  border-color: red;
+  size: 24px;
+}
+</style>
