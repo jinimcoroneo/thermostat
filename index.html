@@ -8,12 +8,21 @@
     <script src="src/jquery-3.2.1.min.js"></script>
     <script src="src/interface.js"></script>
       <div class="medium-usage" id="background">
-        <h1 id="current_temp"> </h1>
+        <h2><span id="current_temp"></span>°c</h2>
         <button id="up_button"> Increase temp </button>
         <button id="down_button"> Decrease temp </button>
         <button id="reset_button"> Reset </button>
         <button id="power_saving"> Power Saving Mode </button>
         <div id="mode_on/off"> Power Saving Mode is <span id="mode"></span> </div>
+        <section>
+          <h5>Outside temperature: <span id="temp"></span> °c </h5>
+          <select id="current_city">
+            <option value="london" name="london">London</option>
+            <option value="newyork" name="newyork">New York</option>
+            <option value="paris" name="paris">Paris</option>
+            <option value="tokyo" name="tokyo">Tokyo</option>
+          </select>
+        </section>
       </div>
   </body>
 </html>

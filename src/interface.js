@@ -4,6 +4,17 @@ $( document ).ready(function() {
 
   outputTemp();
 
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=london&appid=20050ffc83e64ec58171c3e453f74bc7&units=metric', function(data) {
+    $( '#temp' ).text(data.main.temp)
+  })
+
+  $('#current_city').change(function() {
+    var city = $('#current_city').val();
+    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=20050ffc83e64ec58171c3e453f74bc7&units=metric', function(data) {
+      $('#temp').text(data.main.temp)
+    })
+  })
+
   $( "#mode" ).text(function() {
     return thermostat.getMode();
   })
